@@ -43,7 +43,7 @@ function Questions() {
                                         secondary="Answer 3 Content"
                                     />
                                     <ListItemText
-                                        style={{ marginTop: "3%" }}
+                                        style={{ marginTop: "3%", marginBottom: "3%" }}
                                         primary="Answer 4"
                                         secondary="Answer 4 Content"
                                     />
