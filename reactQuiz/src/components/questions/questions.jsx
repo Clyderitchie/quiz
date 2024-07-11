@@ -8,6 +8,7 @@ import {
 function Questions() {
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [timer, setTimer] = useState(0);
 
     const questions = [
         {
@@ -61,6 +62,7 @@ function Questions() {
 
     }
 
+    
 
     useEffect(() => {
         console.log(`Current question index after update: ${currentQuestionIndex}`);
@@ -71,7 +73,7 @@ function Questions() {
             <Card>
                 <CardContent>
                     <Box display="flex" justifyContent="center" height="100%">
-                        <Typography flexGrow={1} sx={{ fontSize: 18, outline: "2px solid blue", width: "25%" }} color="text.primary">
+                        <Typography flexGrow={1} sx={{ fontSize: 18, width: "25%" }} color="text.primary">
                             Question {currentQuestionIndex + 1}
                         </Typography>
                     </Box>
@@ -85,7 +87,7 @@ function Questions() {
                                     {currentQuestion.choices.map((choice, index) => (
                                         <ListItem
                                             key={index}
-                                            style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", outline: "2px solid red", width: "100%" }}
+                                            style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", width: "100%" }}
                                         >
                                             <Button
                                                 variant="contained"

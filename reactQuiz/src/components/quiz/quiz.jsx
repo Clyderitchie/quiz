@@ -2,9 +2,13 @@ import React from "react";
 
 import { Box, Paper, Stack, Button } from '@mui/material';
 import Questions from '../questions/questions';
+import Timer from "./timer";
 
 function Quiz() {
 
+    const handleEndQuiz = () => {
+        console.log('Quiz ended');
+    };
 
     return (
         <>
@@ -20,15 +24,23 @@ function Quiz() {
                 }}
             >
                 <Paper elevation={3} style={{ height: '300px', position: 'relative' }}>
+                    <Box style={{ display:"flex", justifyContent:"space-between", padding:"1%"}}>
+                        <Paper elevation={3} style={{ height: '10%', position: 'relative', width: "25%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <Box>
+                                <Timer initialTime={60} onEnd={handleEndQuiz} />
+                            </Box>
+                        </Paper>
+
+                        <Paper elevation={3} style={{ height: '10%', position: 'relative', width: "25%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <Box>
+                                Score:
+                            </Box>
+                        </Paper>
+                    </Box>
                     <Box display="flex" flexDirection="column" height="100%">
+
                         <Box flexGrow={1}>
                             <Questions />
-                        </Box>
-                        <Box>
-                            <Stack spacing={2} direction="row" justifyContent="space-between">
-                                <Button variant="contained">Previous</Button>
-                                <Button variant="contained">Next</Button>
-                            </Stack>
                         </Box>
                     </Box>
                 </Paper>
