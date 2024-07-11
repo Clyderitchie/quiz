@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import {
     Box, Card, CardActions, CardContent, Button, Typography, List,
@@ -45,14 +45,26 @@ function Questions() {
     const currentQuestion = questions[currentQuestionIndex];
 
     const handleAnswerClick = (choice) => {
-       
-            if (currentQuestionIndex < questions.length -1) {
-                setCurrentQuestionIndex(currentQuestion + 1);
-            } else {
-                alert('Quiz Completed!')
-            }
-        
+
+        console.log(`Question ${currentQuestionIndex + 1} answered with: ${choice}`);
+        console.log(`Current question index before update: ${currentQuestionIndex}`);
+
+        if (currentQuestionIndex < questions.length - 1) {
+            setCurrentQuestionIndex(prevIndex => {
+                const newIndex = prevIndex + 1;
+                console.log(`Updated question index: ${newIndex}`);
+                return newIndex;
+            });
+        } else {
+            alert('Quiz completed!');
+        }
+
     }
+
+
+    useEffect(() => {
+        console.log(`Current question index after update: ${currentQuestionIndex}`);
+    }, [currentQuestionIndex]);
 
     return (
         <>
@@ -63,32 +75,38 @@ function Questions() {
                             Question {currentQuestionIndex + 1}
                         </Typography>
                     </Box>
-                    <Box display="flex" flexDirection="column" justifyContent="center" height="100%">
-                        <Grid item xs={12} md={6}>
-                            <Typography sx={{ mt: 4, mb: 1 }} variant="h6" component="div">
-                                {currentQuestion.title}
-                            </Typography>
-                            <List>
-                                {currentQuestion.choices.map((choice, index) => (
-                                    <ListItem
-                                        key={index}
-                                        style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", outline: "2px solid red", width: "100%" }}
-                                    >
-                                        <Button
-                                            variant="contained"
-                                            onClick={() => handleAnswerClick(choice)}
-                                            sx={{ width: "25%", textAlign: "left" }}
+                    {currentQuestion ? (
+                        <Box display="flex" flexDirection="column" justifyContent="center" height="100%">
+                            <Grid item xs={12} md={6}>
+                                <Typography sx={{ mt: 4, mb: 1 }} variant="h6" component="div">
+                                    {currentQuestion.title}
+                                </Typography>
+                                <List>
+                                    {currentQuestion.choices.map((choice, index) => (
+                                        <ListItem
+                                            key={index}
+                                            style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", outline: "2px solid red", width: "100%" }}
                                         >
-                                            <ListItemText
-                                                primary={choice}
-                                                sx={{ width: "25%" }}
-                                            />
-                                        </Button>
-                                    </ListItem>
-                                ))}
-                            </List>
-                        </Grid>
-                    </Box>
+                                            <Button
+                                                variant="contained"
+                                                onClick={() => handleAnswerClick(choice)}
+                                                sx={{ width: "25%", textAlign: "left" }}
+                                            >
+                                                <ListItemText
+                                                    primary={choice}
+                                                    sx={{ width: "25%" }}
+                                                />
+                                            </Button>
+                                        </ListItem>
+                                    ))}
+                                </List>
+                            </Grid>
+                        </Box>
+                    ) : (
+                        <Typography sx={{ mt: 4, mb: 1 }} variant="h6" component="div">
+                            No more questions.
+                        </Typography>
+                    )}
                 </CardContent>
             </Card>
         </>
