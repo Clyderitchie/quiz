@@ -23,12 +23,14 @@ function Nav() {
                             aria-label="menu"
                             sx={{ mr: 2 }}
                         >
-                            {/* <MenuIcon /> */}
+
                         </IconButton>
-                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                        <Typography variant="h6" component="div" sx={{ flexGrow: 5 }}>
                             React Quiz
                         </Typography>
-                        <Button color="inherit">Start</Button>
+                        <Typography variant="h6" sx={{ flexGrow: .5 }}>
+                            Clyde Ritchie
+                        </Typography>
                     </Toolbar>
                 </AppBar>
             </Box>
