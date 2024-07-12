@@ -5,7 +5,7 @@ import {
     ListItem, Grid, ListItemIcon, ListItemText
 } from '@mui/material'
 
-function Questions() {
+function Questions({ onCorrectAnswer }) {
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [timer, setTimer] = useState(0);
@@ -45,24 +45,19 @@ function Questions() {
 
     const currentQuestion = questions[currentQuestionIndex];
 
-    const handleAnswerClick = (choice) => {
 
-        console.log(`Question ${currentQuestionIndex + 1} answered with: ${choice}`);
-        console.log(`Current question index before update: ${currentQuestionIndex}`);
+    const handleAnswerClick = (choice) => {
+        if (choice === currentQuestion.answer) {
+            onCorrectAnswer();
+        }
 
         if (currentQuestionIndex < questions.length - 1) {
-            setCurrentQuestionIndex(prevIndex => {
-                const newIndex = prevIndex + 1;
-                console.log(`Updated question index: ${newIndex}`);
-                return newIndex;
-            });
+            setCurrentQuestionIndex(prevIndex => prevIndex + 1);
         } else {
             alert('Quiz completed!');
         }
-
     }
 
-    
 
     useEffect(() => {
         console.log(`Current question index after update: ${currentQuestionIndex}`);
