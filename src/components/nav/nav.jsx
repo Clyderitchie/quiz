@@ -14,7 +14,7 @@ function Nav() {
     return (
         <>
             <Box sx={{ flexGrow: 1, mb: 12 }}>
-                <AppBar position="static">
+                <AppBar position="static" style={{ backgroundColor:"Black",  borderRadius: '16px' }}>
                     <Toolbar>
                         <IconButton
                             size="large"

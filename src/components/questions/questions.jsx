@@ -88,10 +88,12 @@ function Questions({ onCorrectAnswer }) {
                                                 variant="contained"
                                                 onClick={() => handleAnswerClick(choice)}
                                                 sx={{ width: "25%", textAlign: "left" }}
+                                                style={{ backgroundColor: "Black" }}
                                             >
                                                 <ListItemText
                                                     primary={choice}
                                                     sx={{ width: "25%" }}
+                                                    style={{ backgroundColor: "Black" }}
                                                 />
                                             </Button>
                                         </ListItem>
