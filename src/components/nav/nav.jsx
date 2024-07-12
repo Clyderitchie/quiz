@@ -11,7 +11,7 @@ function Nav() {
 
     return (
         <>
-            <Box sx={{ flexGrow: 1 }}>
+            <Box sx={{ flexGrow: 1 }} style={{ marginBottom: "5%"}}>
                 <AppBar position="static" style={{ backgroundColor: "black", borderRadius: '16px' }}>
                     <Toolbar sx={{ justifyContent: 'space-between' }}>
                         <Typography variant="h6" component="div">
